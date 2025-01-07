@@ -1,17 +1,3 @@
 [remap]
 
-importer="csv_translation"
-type="Translation"
-uid="uid://bj6tjqhr8r0th"
-
-[deps]
-
-files=["res://resource/class.JOBNAME.translation", "res://resource/class.DESCRIPTION.translation", "res://resource/class.SKILLS.translation"]
-
-source_file="res://resource/class.csv"
-dest_files=["res://resource/class.JOBNAME.translation", "res://resource/class.DESCRIPTION.translation", "res://resource/class.SKILLS.translation"]
-
-[params]
-
-compress=true
-delimiter=0
+importer="keep"
