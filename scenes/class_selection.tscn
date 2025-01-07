@@ -1,0 +1,99 @@
+[gd_scene load_steps=6 format=3 uid="uid://bb2unib3mq7x7"]
+
+[ext_resource type="Script" path="res://scripts/class_selection.gd" id="1_a1u5g"]
+[ext_resource type="StyleBox" uid="uid://ckexhtnb5rob" path="res://assets/styles/label_style.tres" id="1_g02op"]
+[ext_resource type="Script" path="res://scripts/quit_button.gd" id="3_7yag4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cptrc"]
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_vpdcm"]
+font_size = 26
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_a1u5g")
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -696.0
+offset_top = -284.0
+offset_right = -312.0
+offset_bottom = -220.0
+theme_override_font_sizes/font_size = 24
+
+[node name="JobName" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -284.0
+offset_right = 288.0
+offset_bottom = -220.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme_override_styles/normal = ExtResource("1_g02op")
+text = "Lorem Ipsum"
+label_settings = SubResource("LabelSettings_cptrc")
+vertical_alignment = 1
+
+[node name="JobDescription" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -204.0
+offset_right = 288.0
+offset_bottom = 340.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme_override_styles/normal = ExtResource("1_g02op")
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac imperdiet magna, eu finibus augue. Morbi nulla nunc, faucibus in hendrerit vitae, vehicula sit amet metus. Donec neque lectus, laoreet non cursus at, tristique eget mauris. Nulla quis consequat eros. Etiam bibendum egestas lacus, sed accumsan mauris imperdiet a. Nulla eleifend luctus sem. Proin elementum, lacus id elementum volutpat, justo nunc mollis tellus, nec scelerisque velit lacus in lacus. Sed volutpat augue et dui ultricies ultricies. "
+label_settings = SubResource("LabelSettings_vpdcm")
+autowrap_mode = 3
+
+[node name="SkillsContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 312.0
+offset_top = -284.0
+offset_right = 696.0
+offset_bottom = 356.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_top = 64.0
+offset_right = -192.0
+offset_bottom = 128.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 32
+text = "X"
+script = ExtResource("3_7yag4")
+
+[connection signal="pressed" from="QuitButton" to="QuitButton" method="_on_pressed"]
