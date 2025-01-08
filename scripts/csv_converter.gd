@@ -1,10 +1,10 @@
-## Converts CSV file contents to a Dictionary where each key is a unique identifier.
+## Converts CSV file contents to a Dictionary
 class_name CSVConverter extends RefCounted
 
-## Parameters:[br]
-## - file_path: String path to the CSV file[br]
-## - id_column: String name of the column to use as Dictionary keys (default: first column)[br]
-## Returns: Dictionary where keys are from id_column and values are row dictionaries.
+## Converts CSV file contents into usable Dictionary for Godot.[br]
+## The CSV contents structure must be the same as provided in the test PDF file.[br] 
+## [b]ID,JOBNAME,DESCRIPTION,SKILLS[/b][br]
+## [b]int,string,string,string;[/b]
 func csv_to_dict(file_path: String) -> Dictionary:
 	var result_dict = {}
 	var file = FileAccess.open(file_path, FileAccess.READ)
@@ -24,8 +24,11 @@ func csv_to_dict(file_path: String) -> Dictionary:
 			
 		var row_dict = {}
 		
-		# Create dictionary using headers as keys
-		for i in range(min(headers.size(), values.size())):
+		# Get the ID first
+		var id = int(values[0])
+		
+		# Create dictionary using headers as keys, skip ID column
+		for i in range(1, min(headers.size(), values.size())):
 			# Special handling for SKILLS column
 			if headers[i] == "SKILLS":
 				# Split skills by semicolon and clean up the array
@@ -34,19 +37,9 @@ func csv_to_dict(file_path: String) -> Dictionary:
 				skills = skills.filter(func(x): return not x.is_empty())
 				row_dict[headers[i]] = skills
 			else:
-				row_dict[headers[i]] = _convert_value(values[i])
+				row_dict[headers[i]] = values[i]
 		
-		# Use the ID as the dictionary key
-		var id_value = row_dict["ID"]
-		result_dict[id_value] = row_dict
+		# Store in result dictionary using ID as key
+		result_dict[id] = row_dict
 	
 	return result_dict
-
-# Helper function to convert string values to appropriate types
-func _convert_value(value: String) -> Variant:
-	# Try converting to integer
-	if value.is_valid_int():
-		return value.to_int()
-		
-	# Return as string for all other values
-	return value

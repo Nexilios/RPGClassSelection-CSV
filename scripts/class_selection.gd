@@ -63,7 +63,6 @@ func update_skills_display(skills: Array) -> void:
 		var skill_label = Label.new()
 		skill_label.label_settings = LabelSettings.new()
 		skill_label.label_settings.font_size = 20
-		skill_label.custom_minimum_size.y = 40
 		skill_label.add_theme_stylebox_override("normal", label_theme)
 		skill_label.text = "• " + skill
 		skills_container.add_child(skill_label)
